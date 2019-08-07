@@ -276,6 +276,11 @@
 				document.querySelector('[data-credit-card]').classList.remove('is-visa');
 				document.querySelector('img[data-card-type]').src=supportedCards.mastercard;
 				return "is-mastercard";
+			}else{
+				document.querySelector('[data-credit-card]').classList.remove('is-visa');
+				document.querySelector().classList.remove('is-mastercard');
+				document.querySelector('img[data-card-type]').src='';
+				return ;
 			}
 		};
 		const validateCardExpiryDate =() => {
@@ -382,12 +387,14 @@
 						//inputVal[4].value=appState.cardDigits[fieldIndex].join('');
 						//++i;
 					}
-					if(appState.cardDigits[0].length==4){
-						detectCardType(appState.cardDigits[0].join(''));
-					}
+					
 					setTimeout(()=>{
 						//let len= inputVal[fieldIndex].value.length;
 						//inputVal[fieldIndex].style="font-size:1px";
+						if(appState.cardDigits[0].length==4){
+						//if(fieldIndex==0){
+							detectCardType(appState.cardDigits[0].join(''));
+						}
 						if(fieldIndex <3) 
 						inputVal[fieldIndex].value=inputVal[fieldIndex].value.replace(/[0-9]/g,"#");
 						},500);
